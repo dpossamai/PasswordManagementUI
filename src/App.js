@@ -1,14 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SockJsClient from 'react-stomp';
 import './App.css';
 import Client from './Client';
 import Login from './login/Login';
 import Manager from './Manager';
 import { getSession } from './security/Session';
-import { messageService } from './services/messageService';
-import SockJsClient from 'react-stomp';
 
 function App() {
   const [nextPassword, setNextPassword] = useState('');
