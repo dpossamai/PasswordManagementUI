@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Form, FormControl, InputGroup, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import AlertMessage from './AlertMessage';
 import api from './api/api';
 
-import { messageService } from './services/messageService';
 
 export default function Client(props) {
 
     const [state, setState] = useState();
-    // useEffect(() => {
-    //     setState(props.nextPassword);
-    // }, [props.nextPassword])
 
     const [message, setMessage] = useState({
         show: false, text: '', type: ''

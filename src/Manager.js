@@ -1,10 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import AlertMessage from './AlertMessage';
 import api from './api/api';
 import { logout } from './security/Session';
-import { messageService } from './services/messageService';
 
 export default function Manager(props) {
 
@@ -23,10 +21,18 @@ export default function Manager(props) {
             }else{
                 setMessage({ text: 'Operação realizada com sucesso', show: true, type: 'success' });
             }
-            // messageService.sendMessage(res.data);
+            
         }
         ).catch(e => {
-            console.log(e);
+            if(e.response && e.response.status == 403){
+                setMessage({ text: 'Sessão expirada!', show: true, type: 'danger' });
+                logout();
+                setTimeout(() => {
+                    window.location.replace('http://localhost:3000/login');
+                }, 2000);
+            }else{
+                setMessage({ text: 'Problema ao se conectar com o servidor. Tente novamente mais tarde', show: true, type: 'danger' });
+            }
         });
     }
 
@@ -36,11 +42,10 @@ export default function Manager(props) {
             console.log(res.data);
             props.setNextPassword(null);
             setMessage({ text: 'Senhas resetadas', show: true, type: 'success' });
-            // messageService.sendMessage(res.data);
+            
         }
         ).catch(e => {
-            console.log(e.response.status);
-            if(e.response.status == 403){
+            if(e.response && e.response.status == 403){
                 setMessage({ text: 'Sessão expirada!', show: true, type: 'danger' });
                 logout();
                 setTimeout(() => {

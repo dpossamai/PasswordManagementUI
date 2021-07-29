@@ -1,6 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import AlertMessage from '../AlertMessage';
@@ -19,10 +17,6 @@ export default function Login() {
     const [message, setMessage] = useState({
         show: false, text: '', type: ''
     });
-
-    // useEffect(() => {
-
-    // }, []);
 
     const handleChangeUsername = (event) => {
         setState({ ...state, username: event.target.value });
@@ -72,7 +66,6 @@ export default function Login() {
                     />
                 </Form.Group>
                 <Button block size="lg" type="submit"
-                //  disabled={!validateForm()}
                 >
                     Login
                 </Button>
