@@ -18,25 +18,6 @@ function App() {
     setNextPassword(msg.message);
   }
 
-  // useEffect(() => {
-  //   console.log("SERVICE: ")
-  //   console.log(messageService);
-  //   const subscription = messageService.getMessage().subscribe(message => {
-  //     console.log("RECEBEU MESSAGE: " + message.text)
-  //     if (message) {
-  //       // add message to local state if not empty
-  //       setNextPassword(message.text);
-  //     } else {
-  //       // clear messages when empty message received
-  //       setNextPassword('');
-  //     }
-  //   });
-  //   return () => {
-  //     console.log("UNSUBSCRIBE!");
-  //     subscription.unsubscribe();
-  //   }
-  // }, [])
-
 
   return (
     <Router>
